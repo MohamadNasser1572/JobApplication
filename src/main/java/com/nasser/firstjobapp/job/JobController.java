@@ -1,13 +1,13 @@
 package com.nasser.firstjobapp.job;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/jobs")
 public class JobController {
     private JobService jobService;
 
@@ -15,17 +15,26 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/jobs")
-    public List<Job> findAll() {
-        return jobService.findAll();
+    @GetMapping
+    public ResponseEntity<List<Job>> findAll() {
+        return ResponseEntity.ok(jobService.findAll());
     }
 
 
     //POST /jobs: create a new job(request body should contain job details)
-    @PostMapping("/jobs")
-    public String createJob(@RequestBody Job job) {
+    @PostMapping
+    public ResponseEntity<String> createJob(@RequestBody Job job) {
         jobService.createJob(job);
-        return "Job created successfully.";
+        return new ResponseEntity<>("Job added successfully", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Job> getJobById(@PathVariable Long id) {
+        Job job = jobService.getJobById(id);
+        if (job != null) {
+            return ResponseEntity.ok(job);
+        }
+        return ResponseEntity.notFound().build();
     }
 }
 
