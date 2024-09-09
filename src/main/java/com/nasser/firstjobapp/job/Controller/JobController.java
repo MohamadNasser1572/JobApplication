@@ -1,5 +1,7 @@
-package com.nasser.firstjobapp.job;
+package com.nasser.firstjobapp.job.Controller;
 
+import com.nasser.firstjobapp.job.Model.Job;
+import com.nasser.firstjobapp.job.Service.JobService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +46,16 @@ public class JobController {
             return new ResponseEntity<>("Job deleted successfully", HttpStatus.OK);
         return new ResponseEntity<>("Job not found", HttpStatus.NOT_FOUND);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateJobById(@PathVariable Long id,@RequestBody Job updatedJob) {
+        boolean isUpdated = jobService.updateJob(id,updatedJob);
+        if (isUpdated) {
+            return new ResponseEntity<>("Job updated successfully.", HttpStatus.OK);
+        } else
+            return new ResponseEntity<>("Account not updated", HttpStatus.NOT_FOUND);
+    }
+
 }
 
 /*

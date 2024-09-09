@@ -1,7 +1,7 @@
-package com.nasser.firstjobapp.job.impl;
+package com.nasser.firstjobapp.job.Service.impl;
 
-import com.nasser.firstjobapp.job.Job;
-import com.nasser.firstjobapp.job.JobService;
+import com.nasser.firstjobapp.job.Model.Job;
+import com.nasser.firstjobapp.job.Service.JobService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,6 +38,22 @@ public class JobServiceImpl implements JobService {
         for (Job job: jobs){
             if (job.getId().equals(id)) {
                 jobs.remove(job);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    @Override
+    public boolean updateJob(Long id, Job updatedJob){
+        for(Job job: jobs){
+            if(job.getId().equals(id)){
+                job.setTitle(updatedJob.getTitle());
+                job.setDescription(updatedJob.getDescription());
+                job.setMinSalary(updatedJob.getMinSalary());
+                job.setMaxSalary(updatedJob.getMaxSalary());
+                job.setLocation(updatedJob.getLocation());
                 return true;
             }
         }

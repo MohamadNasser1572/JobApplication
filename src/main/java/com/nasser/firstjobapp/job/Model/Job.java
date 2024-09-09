@@ -1,4 +1,4 @@
-package com.nasser.firstjobapp.job;
+package com.nasser.firstjobapp.job.Model;
 
 public class Job {
 
@@ -6,15 +6,15 @@ public class Job {
     private Long id;
     private String title;
     private String description;
-    private String midSalary;
+    private String minSalary;
     private String maxSalary;
     private String location;
 
-    public Job(Long id, String title, String description, String midSalary, String maxSalary, String location) {
+    public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.midSalary = midSalary;
+        this.minSalary = minSalary;
         this.maxSalary = maxSalary;
         this.location = location;
     }
@@ -43,12 +43,12 @@ public class Job {
         this.description = description;
     }
 
-    public String getMidSalary() {
-        return midSalary;
+    public String getMinSalary() {
+        return minSalary;
     }
 
-    public void setMidSalary(String midSalary) {
-        this.midSalary = midSalary;
+    public void setMinSalary(String minSalary) {
+        this.minSalary = minSalary;
     }
 
     public String getMaxSalary() {
