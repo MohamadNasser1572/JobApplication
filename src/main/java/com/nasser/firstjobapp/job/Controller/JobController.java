@@ -73,7 +73,4 @@ public class JobController {
  * DELETE {base_url}/jobs/1
  * PUT {base_url}/jobs/1
  *
-
-
-
  */
