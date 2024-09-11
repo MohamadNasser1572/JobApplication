@@ -3,7 +3,6 @@ package com.nasser.firstjobapp.job.Model;
 import jakarta.persistence.*;
 
 @Entity
-//@Table(name = "job_table")
 public class Job {
     //fields every job should have
     @Id

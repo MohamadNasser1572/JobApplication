@@ -4,8 +4,6 @@ import com.nasser.firstjobapp.job.Model.Job;
 import com.nasser.firstjobapp.job.Repository.JobRepository;
 import com.nasser.firstjobapp.job.Service.JobService;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
